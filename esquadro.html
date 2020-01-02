@@ -1,7 +1,7 @@
 <canvas width="600" height="400"></canvas>
 
 <script>
-    var tela = document.querySelector('canvas')
+    /*var tela = document.querySelector('canvas')
     var pincel = tela.getContext('2d')
 
     pincel.fillStyle = 'black'
@@ -16,5 +16,26 @@
     pincel.moveTo(100, 175)
     pincel.lineTo(100, 350)
     pincel.lineTo(275, 350)
-    pincel.fill()
+    pincel.fill()*/
+
+    function drawSquare(xA, yA, xC, yC, color) {
+        let screen = document.querySelector('canvas')
+        let brush = screen.getContext('2d')
+
+        brush.fillStyle = color
+        brush.beginPath()
+        brush.moveTo(xA, yA)
+        brush.lineTo(xA, yC)
+        brush.lineTo(xC, yC)
+        brush.fill()
+
+        brush.fillStyle = 'white'
+        brush.beginPath()
+        brush.moveTo((6 * xA + xC)/7, (9 * yA + 5 * yC)/14)
+        brush.lineTo((6 * xA + xC)/7, (yA + 6 * yC)/7);
+        brush.lineTo((5 * xA + 9 * xC)/14, (yA + 6 * yC)/7);
+        brush.fill();
+    }
+
+    drawSquare(50, 50, 400, 400, 'black')
 </script>
