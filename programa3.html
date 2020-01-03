@@ -12,34 +12,79 @@
     var radius = 10
     var isDraw = false
 
-    function drawCircle(event) {
+    // function drawCircle(event) {
+    //     let x = event.pageX - screen.offsetLeft
+    //     let y = event.pageY - screen.offsetTop
+
+    //     if(isDraw) {
+    //         brush.fillStyle = colors[indexColor]
+    //         brush.beginPath()
+    //         /*if(event.shiftKey) {
+    //             console.log('Shift key is down!')
+    //             if(radius < 40)
+    //                 radius += 10
+    //             else {
+    //                 radius = 40
+    //                 console.log('Maximum size reached!')
+    //             }
+    //         } else {
+    //             console.log('Shift key isnt down!')
+    //             raidus = 10
+    //         }
+    //         if(event.altKey) {
+    //             console.log('Alt key is down!')
+    //             if(radius > 10)
+    //                 radius -= 5
+    //             else {
+    //                 radius = 10
+    //                 console.log('Minimum size reached!')
+    //             }
+    //         }*/
+    //         if(event.shiftKey && event.altKey) {
+    //             console.log('Keys pressed simultaneously!')
+    //         } else if(event.shiftKey && (radius + 10) <= 40) {
+    //             radius += 10
+    //             console.log('Radius value: '+radius)
+    //         } else if(event.altKey && (radius - 5) >= 10) {
+    //             radius -= 5
+    //             console.log('Radius value: '+radius)
+    //         }
+    //         brush.arc(x, y, radius, 0, 2 * Math.PI)
+    //         brush.fill()
+    //     }
+    //     console.log('Position of click: '+ x +','+ y +'.')
+    // }
+    
+    // //screen.onclick = drawCircle
+    // screen.onmousemove = drawCircle
+
+    function changeColor() {
+        indexColor++
+        if(indexColor == colors.length)
+            indexColor = 0
+        console.log('Change color: '+colors[indexColor])
+        return false
+    }
+
+    // screen.oncontextmenu = changeColor
+
+    // function ableDraw() {
+    //     isDraw = true
+    // }
+    // function disableDraw() {
+    //     isDraw = false
+    // }
+
+    // screen.onmousedown = ableDraw
+    // screen.onmouseup = disableDraw
+
+    screen.onmousemove = function(event) {
         let x = event.pageX - screen.offsetLeft
         let y = event.pageY - screen.offsetTop
-        
+
         if(isDraw) {
             brush.fillStyle = colors[indexColor]
             brush.beginPath()
-            /*if(event.shiftKey) {
-                console.log('Shift key is down!')
-                if(radius < 40)
-                    radius += 10
-                else {
-                    radius = 40
-                    console.log('Maximum size reached!')
-                }
-            } else {
-                console.log('Shift key isnt down!')
-                raidus = 10
-            }
-            if(event.altKey) {
-                console.log('Alt key is down!')
-                if(radius > 10)
-                    radius -= 5
-                else {
-                    radius = 10
-                    console.log('Minimum size reached!')
-                }
-            }*/
             if(event.shiftKey && event.altKey) {
                 console.log('Keys pressed simultaneously!')
             } else if(event.shiftKey && (radius + 10) <= 40) {
@@ -55,26 +100,10 @@
         console.log('Position of click: '+ x +','+ y +'.')
     }
 
-    //screen.onclick = drawCircle
-    screen.onmousemove = drawCircle
-
-    function changeColor() {
-        indexColor++
-        if(indexColor == colors.length)
-            indexColor = 0
-        console.log('Change color: '+colors[indexColor])
-        return false
-    }
-
-    screen.oncontextmenu = changeColor
-
-    function ableDraw() {
+    screen.onmousedown = function() {
         isDraw = true
     }
-    function disableDraw() {
+    screen.onmouseup = function() {
         isDraw = false
     }
-
-    screen.onmousedown = ableDraw
-    screen.onmouseup = disableDraw    
 </script>
