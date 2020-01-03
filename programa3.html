@@ -7,10 +7,13 @@
     brush.fillStyle = 'grey'
     brush.fillRect(0, 0, 600, 400)
 
-    function drawBlueCircle(event) {
+    let colors = ['blue', 'red', 'green']
+    var indexColor = 0
+
+    function drawCircle(event) {
         let x = event.pageX - screen.offsetLeft
         let y = event.pageY - screen.offsetTop
-        brush.fillStyle = 'blue'
+        brush.fillStyle = colors[indexColor]
         brush.beginPath()
         brush.arc(x, y, 10, 0, 2 * Math.PI)
         brush.fill()
@@ -18,5 +21,15 @@
         console.log('Position of click: '+ x +','+ y +'.')
     }
 
-    screen.onclick = drawBlueCircle
+    screen.onclick = drawCircle
+
+    function changeColor() {
+        indexColor++
+        if(indexColor == colors.length)
+            indexColor = 0
+        console.log('Change color: '+colors[indexColor])
+        return false
+    }
+
+    screen.oncontextmenu = changeColor
 </script>
